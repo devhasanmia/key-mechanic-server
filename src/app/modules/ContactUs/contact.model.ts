@@ -5,15 +5,15 @@ const contactSchema = new Schema<IContact>(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Name is a required field"],
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Email is a required Field"],
     },
     message: {
       type: String,
-      required: true,
+      required: [true, "Message is required Field"],
     },
   },
   { timestamps: true }

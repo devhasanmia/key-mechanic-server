@@ -3,6 +3,7 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { notFound } from "./app/middlewares/notFound";
 import { ContactControllers } from "./app/modules/ContactUs/contact.controller";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 const app: Application = express();
 
 // Middleware
@@ -18,8 +19,11 @@ app.get("/health", (req: Request, res: Response) => {
   });
 });
 
-app.post("/contact", ContactControllers.sendMessage)
+
+app.post("/contact", ContactControllers.sendMessage);
+app.get("/contact", ContactControllers.getAllMessage);
 
 app.use(notFound);
+app.use(globalErrorHandler)
 
 export default app;
