@@ -2,6 +2,7 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { notFound } from "./app/middlewares/notFound";
+import { ContactControllers } from "./app/modules/ContactUs/contact.controller";
 const app: Application = express();
 
 // Middleware
@@ -16,6 +17,8 @@ app.get("/health", (req: Request, res: Response) => {
     version: "1.0.0",
   });
 });
+
+app.post("/contact", ContactControllers.sendMessage)
 
 app.use(notFound);
 
