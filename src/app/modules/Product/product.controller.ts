@@ -15,19 +15,29 @@ const addProduct: RequestHandler = async (req, res, next) => {
 };
 
 const getAllProducts: RequestHandler = async (req, res, next) => {
-    try {
-        const data = await ProductServices.getAllProduct();
-        res.status(201).json({
-            success: true,
-            message: "All Product retrieved successfully!",
-            data: data,
-          });
-    } catch (error) {
-        next(error);
-    }
-}
+  try {
+    const data = await ProductServices.getAllProduct();
+    res.status(201).json({
+      success: true,
+      message: "All Product retrieved successfully!",
+      data: data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getProdutById: RequestHandler = async (req, res, next) => {
+  try {
+    const id = req.params;
+    const data = await ProductServices.getProductById(id);
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const ProductControllers = {
-    addProduct,
-    getAllProducts
-}
+  addProduct,
+  getAllProducts,
+  getProdutById
+};
