@@ -15,7 +15,7 @@ const productSchema = new Schema<IProduct>(
       type: String,
       required: true,
     },
-    quantity: {
+    stock: {
       type: Number,
       default: 1,
     },

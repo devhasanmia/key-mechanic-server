@@ -18,9 +18,9 @@ app.get("/health", (req: Request, res: Response) => {
     version: "1.0.0",
   });
 });
-
 // Routes
 app.use('/api/v1/', router)
+
 app.use(notFound);
 app.use(globalErrorHandler)
 
