@@ -8,7 +8,7 @@ const sendMessage = async (payload: IContact) => {
 };
 
 const getAllMessage = async () => {
-  const data = await Contact.find();
+  const data = await Contact.find().sort({ createdAt: -1 });
   if (data.length === 0) {
     throw AppError(404, "No messages found.");
   }
