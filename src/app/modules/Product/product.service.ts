@@ -2,13 +2,15 @@ import mongoose from "mongoose";
 import { IProduct } from "./product.interface";
 import Product from "./product.model";
 import { AppError } from "../../errors/AppError";
+import { sendImageToCloudinary } from "../../utils/sendImageToCloudinary";
 
 const addProduct = async (payload: IProduct) => {
+  sendImageToCloudinary()
   const data = await Product.create(payload);
   return data;
 };
 const getAllProduct = async () => {
-  const data = await Product.find();
+  const data = await Product.find().sort({ createdAt: -1 })
   if (data.length === 0) {
     throw AppError(404, "Product Not Found")
   }

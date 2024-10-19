@@ -3,11 +3,13 @@ import { ProductServices } from "./product.service";
 
 const addProduct: RequestHandler = async (req, res, next) => {
   try {
-    const data = await ProductServices.addProduct(req.body);
+    // const data = await ProductServices.addProduct(req.body);
+    console.log(req.file)
+    console.log(req.body)
     res.status(201).json({
       success: true,
       message: "Product added successfully!",
-      data: data,
+      // data: data,
     });
   } catch (error) {
     next(error);
